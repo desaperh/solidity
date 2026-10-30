@@ -17,12 +17,15 @@ the compiler notifying you about it.
 New Restrictions
 ================
 
+This section lists changes that might cause existing contracts to not compile anymore.
+
 * ABI coder v1 has been removed and ``pragma abicoder v1;`` is no longer accepted.
   ABI coder v2, which has been the default since Solidity 0.8.0, is now the only implementation.
 
 * Deprecated ``pragma experimental SMTChecker;`` is no longer accepted.
   SMTChecker can be enabled by setting model checker engine to ``chc``.
 
+* Virtual modifiers are disallowed.
 
 Interface Changes
 =================
@@ -48,4 +51,8 @@ How to update your code
   to the parameter types.
 
 * Remove ``pragma experimental SMTChecker;``.
+
+* Virtual modifiers can, in most cases, be replaced by a non-virtual modifier and a virtual helper function.
+  Non-virtual modifier can delegate the work to the virtual helper that derived contracts can override.
+
 
